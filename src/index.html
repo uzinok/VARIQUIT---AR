@@ -1,29 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-	<link rel="stylesheet" href="styles/main.min.css">
+	<link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
-	<div style="display: none;">
-		{% include 'img/sprite.svg' %}
-	</div>
+	<script src="http://ctr-localhost.ru/vlad/jq.js"></script>
+	<main>
+		<!-- top -->
 
-	<svg width="20" height="20" class="main-nav__ico">
-		<use xlink:href="#icon-geo"></use>
-	</svg>
+		<section class="top">
+			<div class="top__wrap wrap">
 
-	Далеко-далеко за словесными горами в стране, гласных и согласных живут
-	рыбные тексты. Парадигматическая переулка дал ведущими его семантика продолжил мир точках свой!
-	<img src="./img/1.jpg" alt="">
-	<script src="scripts/main.min.js"></script>
+				<h1>
+					<span>Variquit cream</span>
+					venas sanas - facilidad de movimiento
+				</h1>
+
+				<ul class="top__list list">
+					<li class="top__item">
+						<img src="./img/top-list-1.jpg" alt="#">
+						Alivia el dolor y la pesadez en las piernas
+					</li>
+					<li class="top__item">
+						<img src="./img/top-list-2.jpg" alt="#">
+						Combate la inflamación y la hinchazón
+					</li>
+					<li class="top__item">
+						<img src="./img/top-list-3.jpg" alt="#">
+						Hace que la red vascular sea menos pronunciada
+					</li>
+					<li class="top__item">
+						<img src="./img/top-list-4.jpg" alt="#">
+						Mejora la circulación de la sangre y protege contra las venas varicosas
+					</li>
+				</ul>
+
+				<div class="top__prod">
+					<img src="./img/prod.png" alt="Variquit cream" class="top__prod-img">
+
+					<p class="top__prod--after">
+						<img src="./img/natural.png" alt="#">
+						<img src="./img/guarantee.png" alt="#">
+						<img src="./img/gmo.png" alt="#">
+					</p>
+				</div>
+
+				<form action="#" method="post" class="form">
+					<p class="form__price">
+						<span class="form__discont">-50%</span>
+
+						<span class="old_price">{{ old_price }} {{ currency }}</span>
+						<span class="new_price">{{ price }} {{ currency }}</span>
+					</p>
+
+					<p>
+						<select name="country_code" id="country_code_selector" class="form__control">
+							<option value="ES"> España </option>
+						</select>
+						<input type="text" name="name" class="form__control" placeholder="Nombre">
+						<input type="tel" name="phone" class="form__control only_number" placeholder="Número de teléfono">
+						<button class="form__button button js_submit button__text">Pedir</button>
+					</p>
+
+					<p class="form__bottom">
+						<img src="./img/safe.png" alt="#">
+						<img src="./img/secure.png" alt="#">
+						<img src="./img/norton.png" alt="#">
+					</p>
+				</form>
+
+			</div>
+		</section>
+		<!-- ./top -->
+	</main>
+
+	<script>
+				// style
+				function asyncCss(files) {
+				files.forEach(file => {
+				let link = document.createElement('link');
+				link.href = file;
+				link.rel = 'stylesheet';
+
+				document.head.append(link);
+				});
+
+				}
+
+				asyncCss(['styles/media.css']);
+	</script>
+
 </body>
 
 </html>

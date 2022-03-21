@@ -8,8 +8,6 @@ const {
 
 // clean
 const del = require('del');
-// rename
-const rename = require('gulp-rename');
 // browserSync
 const browserSync = require('browser-sync').create();
 // error
@@ -26,8 +24,6 @@ const postcss = require('gulp-postcss');
 const postLess = require('postcss-less');
 const postImport = require('postcss-import');
 const postUrl = require('postcss-url');
-const postMediaMinMax = require('postcss-media-minmax');
-const csso = require('postcss-csso')
 
 // scripts
 const babel = require('gulp-babel');
@@ -35,7 +31,6 @@ const minify = require('gulp-minify');
 
 // html
 const htmlmin = require('gulp-htmlmin');
-const nunjucks = require('gulp-nunjucks');
 
 const paths = {
 	dest: 'dest',
@@ -120,14 +115,8 @@ function styles() {
 		}))
 		.pipe(less())
 		.pipe(postcss([
-			postMediaMinMax(),
-			csso(),
 			autoprefixer(),
 		]))
-		.pipe(rename({
-			basename: 'main',
-			suffix: '.min'
-		}))
 		.pipe(dest(paths.styles.dest, {
 			sourcemaps: "."
 		}))
@@ -163,10 +152,9 @@ function scripts() {
 // html
 function html() {
 	return src(paths.html.src)
-		.pipe(nunjucks.compile())
 		.pipe(htmlmin({
 			removeComments: false,
-			collapseWhitespace: true
+			collapseWhitespace: false
 		}))
 		.pipe(dest(paths.html.dest))
 		.pipe(browserSync.stream());
