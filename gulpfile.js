@@ -92,9 +92,7 @@ function copy() {
 
 // styles
 function styles() {
-	return src(paths.styles.src, {
-			sourcemaps: true
-		})
+	return src(paths.styles.src)
 		.pipe(plumber({
 			errorHandler: notify.onError(function(err) {
 				return {
