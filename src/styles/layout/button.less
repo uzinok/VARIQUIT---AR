@@ -1,4 +1,5 @@
 .button {
+	display: inline-block;
 	box-sizing: border-box;
 	min-width: 192px;
 	padding: 14px 14px 13px;
@@ -9,6 +10,7 @@
 	text-align: center;
 	color: #fff;
 	text-transform: uppercase;
+	text-decoration: none;
 	background: linear-gradient(88.84deg, #FC4A1A 0%, #F7B733 100%);
 	border: 0;
 	border-radius: 64px;
@@ -23,5 +25,21 @@
 	&:focus,
 	&:active {
 		box-shadow: 0 0 0 transparent;
+	}
+
+	&--link {
+		margin-top: 1em;
+		padding-right: 54px;
+		padding-left: 54px;
+		color: #000;
+		background: #FFFFFF;
+		border: 1px solid #F7B733;
+		box-shadow: none;
+		transition: background 0.2s ease-in-out;
+
+		&:hover {
+			background: #F7B733;
+			box-shadow: none;
+		}
 	}
 }

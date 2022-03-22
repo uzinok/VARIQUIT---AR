@@ -12,6 +12,10 @@ img {
 
 section {
 	position: relative;
+	padding-bottom: 24px;
+}
+
+main {
 	overflow: hidden;
 }
 
@@ -21,15 +25,6 @@ section {
 	margin: 0 auto;
 	padding-right: 16px;
 	padding-left: 16px;
-}
-
-section {
-	padding-top: 36px;
-	padding-bottom: 40px;
-
-	@media (min-width: @min-lg) {
-		padding-top: 80px;
-	}
 }
 
 .bg {
@@ -61,4 +56,17 @@ section {
 
 h2 {
 	margin: 0;
+	font-size: 24px;
+	line-height: 32px;
+	text-transform: uppercase;
+
+	@media (min-width: @min-lg) {
+		font-size: 40px;
+		line-height: 48px;
+	}
+
+	& span {
+		color: #fff;
+		background-color: @red;
+	}
 }
