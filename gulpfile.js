@@ -18,7 +18,7 @@ const notify = require('gulp-notify');
 const less = require('gulp-less');
 // const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('autoprefixer');
-// const gcmq = require('gulp-group-css-media-queries');
+const gcmq = require('gulp-group-css-media-queries');
 
 const postcss = require('gulp-postcss');
 const postLess = require('postcss-less');
@@ -83,6 +83,7 @@ function copy() {
 			"./src/*.ico",
 			"./src/img/**/*.{svg,jpg,jpeg,png,webp,avif}",
 			"./src/favicons/*",
+			"./src/js/*.js",
 			"./src/*.webmanifest"
 		], {
 			base: paths.src
@@ -112,6 +113,7 @@ function styles() {
 			errorHandler: onError
 		}))
 		.pipe(less())
+		.pipe(gcmq())
 		.pipe(postcss([
 			autoprefixer(),
 		]))
@@ -124,27 +126,27 @@ function styles() {
 // scripts
 function scripts() {
 	return src(paths.scripts.src)
-		.pipe(plumber({
-			errorHandler: notify.onError(function(err) {
-				return {
-					title: 'Task scripts',
-					message: "Error: <%= error.message %>",
-					sound: true
-				}
-			})
-		}))
-		.pipe(babel({
-			presets: ['@babel/preset-env']
-		}))
-		.pipe(minify({
-			ext: {
-				src: '.js',
-				min: '.min.js'
-			},
-			exclude: ['tasks']
-		}))
-		.pipe(dest(paths.scripts.dest))
-		.pipe(browserSync.stream());
+		// .pipe(plumber({
+		// 	errorHandler: notify.onError(function(err) {
+		// 		return {
+		// 			title: 'Task scripts',
+		// 			message: "Error: <%= error.message %>",
+		// 			sound: true
+		// 		}
+		// 	})
+		// }))
+		// .pipe(babel({
+		// 	presets: ['@babel/preset-env']
+		// }))
+		// .pipe(minify({
+		// 	ext: {
+		// 		src: '.js',
+		// 		min: '.min.js'
+		// 	},
+		// 	exclude: ['tasks']
+		// }))
+		// .pipe(dest(paths.scripts.dest))
+		// .pipe(browserSync.stream());
 }
 
 // html
@@ -161,7 +163,6 @@ function html() {
 // watch
 function watchFiles() {
 	watch(paths.styles.watch, styles)
-	watch(paths.scripts.watch, scripts)
 	watch(paths.html.watch, html)
 }
 
